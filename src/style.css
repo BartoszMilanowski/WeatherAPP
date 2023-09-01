@@ -1,0 +1,65 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100%;
+    font-size: 10px;
+    font-family: 'Nunito', sans-serif;
+    overflow-x: hidden;
+}
+
+.header{
+    height: 10vh;
+    padding: 2em;
+    background-color: aliceblue;
+}
+
+.app-name{
+    font-size: 20px;
+}
+
+.date{
+    font-size: 15px;
+    margin-top: 4px;
+}
+
+.weather-section{
+    height: 90vh;
+    width: 100%;
+    padding: 5px;
+    align-items: center;
+    background-image: url('./image/clear-sky.jpg');
+    background-position: center;
+}
+
+.weather-brick{
+    display: flex;
+    padding-left: 10px;
+    font-size: 10vh;
+    color: white;
+    background: rgba(255, 255, 255, 0.21);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.temp-icon{
+    width: 5vw;
+    height: 5vw;
+    margin-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.loc-headline{
+    color: white;
+    font-size: 5vh;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import therometer from '../image/icons/thermometer.png';
 import location from '../image/icons/location.png';
-import loading from '../image/Spinner-1s-200px.gif';
 import clear from '../image/icons/clear.png';
 import thunderstorm from '../image/icons/thunderstorm.png';
 import cloudy from '../image/icons/cloudy.png';
@@ -10,31 +9,33 @@ import rainy from '../image/icons/rainy.png';
 import snow from '../image/icons/snow.png';
 import mist from '../image/icons/mist.png';
 
-
-
 export const WeatherBrick = ({data}) => {
 
+  
     let icon = chooseIcon(data);
+
     return(
 
         <div className="weather-brick">
-             <div style={{display: 'flex'}}>
             <div style={{display: 'flex'}}>
-                <img className="temp-icon"
-                src={location} />
-                <p className="location-name">{data.name}</p>
-            </div>
-            <div style={{display: 'flex'}}>
-                <img className="temp-icon" 
-                src={therometer}/>
-                <p>{data?.main?.temp}&deg;C</p>
-            </div>
-            <div>
-                <img className="temp-icon" src={icon} />
+                <div style={{display: 'flex'}}>
+                    <img className="temp-icon"
+                    src={location} />
+                    <p className="location-name">{data.name}</p>
+                </div>
+                <div style={{display: 'flex'}}>
+                    <img className="temp-icon" 
+                    src={therometer}/>
+                    <p>{data?.main?.temp}&deg;C</p>
+                </div>
+                <div>
+                    <img className="temp-icon" src={icon} />
+                </div>
+                <div>
+                    <p>{data?.wind?.speed}km/h</p>
+                </div>
             </div>
         </div>
-        </div>
-
     )
 }
 

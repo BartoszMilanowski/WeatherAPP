@@ -1,27 +1,41 @@
-import React from "react";
+import React, { useRef } from "react";
 
-const getDay = () => {
-    const days = ['niedziela','poniedziałek', 'wtorek', 'środa', 'czwartek', 'piątek', 'sobota'];
+export const Header = ({changeSearchData}) => {
 
-    const d = new Date();
-    return days[d.getDay()];
-}
+    const searchRef = useRef(null);
 
-const getDate = () => {
+    const getDay = () => {
+        const days = ['niedziela','poniedziałek', 'wtorek', 'środa', 'czwartek', 'piątek', 'sobota'];
+    
+        const d = new Date();
+        return days[d.getDay()];
+    }
+    
+    const getDate = () => {
+    
+        const d = new Date();
+        const day = d.getDate() < 10 ? `0${d.getDate()}` : d.getDate();
+        const month = d.getMonth() < 10 ? `0${d.getMonth()+1}` : d.getMonth()+1;
+    
+        return day + '.' + month + '.' + d.getFullYear();
+    }
 
-    const d = new Date();
-    const day = d.getDate() < 10 ? `0${d.getDate()}` : d.getDate();
-    const month = d.getMonth() < 10 ? `0${d.getMonth()+1}` : d.getMonth()+1;
-
-    return day + '.' + month + '.' + d.getFullYear();
-}
-
-export const Header = () => {
+    const sendSearch = () => {
+        changeSearchData(searchRef.current.value);
+        searchRef.current.value = '';
+    }
 
     return(
         <div className="header">
-            <h1 className="app-name">WeatherAPP</h1>
-            <p className="date">Dzisiaj jest {getDay()}, {getDate()}.</p>
+            <div>
+                <h1 className="app-name">WeatherAPP</h1>
+                <p className="date">Dzisiaj jest {getDay()}, {getDate()}.</p> 
+            </div>
+            
+            <div className="search-area">
+                <input ref={searchRef}/>
+                <button onClick={() => sendSearch()}>Szukaj</button>
+            </div>
         </div>
     )
 }

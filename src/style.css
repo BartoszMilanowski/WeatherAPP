@@ -13,9 +13,24 @@ html {
 }
 
 .header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     height: 10vh;
     padding: 2em;
     background-color: aliceblue;
+}
+
+.search-area input{
+    height: 30px;
+    margin-right: 5px;
+    padding: 8px;
+    border-radius: 16px;
+}
+.search-area button{
+    height: 30px;
+    width: 70px;
+    border-radius: 16px;
 }
 
 .app-name{
@@ -39,7 +54,7 @@ html {
 .weather-brick{
     display: flex;
     padding-left: 10px;
-    font-size: 10vh;
+    font-size: 5vw;
     color: white;
     background: rgba(255, 255, 255, 0.21);
     border-radius: 16px;

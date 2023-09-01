@@ -10,7 +10,7 @@ export const Weather = () => {
     const[data, setData] = useState([]);
 
     const API_URL = 'https://api.openweathermap.org/data/2.5/weather?';
-    const API_KEY = 'f5c0c39a31e588068cff89c82d020f70';
+    const API_KEY = 'someApiKey';
 
     useEffect(() => {
         const fetchData = async() => {

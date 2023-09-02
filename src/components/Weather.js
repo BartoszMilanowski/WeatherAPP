@@ -6,31 +6,31 @@ import { FoundList } from "./FoundList";
 
 export const Weather = ({fromSearch}) => {
 
-    const[loading, setLoading] = useState(true);
-    const[lat, setLat] = useState('');
-    const[long, setLong] = useState('');
-    const[localData, setLocalData] = useState('');
+    const[loading, setLoading] = useState(false);
+    // const[lat, setLat] = useState('');
+    // const[long, setLong] = useState('');
+    // const[localData, setLocalData] = useState('');
     const[foundList, setFoundList] = useState([]);
 
-    useEffect(() => {
-         const fetchData = async() => {
-            navigator.geolocation.getCurrentPosition(function(pos) {
-                setLat(pos.coords.latitude);
-                setLong(pos.coords.longitude);
-            });
+    // useEffect(() => {
+    //      const fetchData = async() => {
+    //         navigator.geolocation.getCurrentPosition(function(pos) {
+    //             setLat(pos.coords.latitude);
+    //             setLong(pos.coords.longitude);
+    //         });
             
-            await fetch(`${API_URL}lat=${lat}&lon=${long}&units=metric&APPID=${API_KEY}`)
-            .then(res => res.json())
-            .then(result => {
-                setLocalData(result);
-                console.log(result);
-                if(result.cod !== '400'){
-                    setLoading(false);
-                }
-            });
-        }
-        fetchData();
-    }, [lat, long]);
+    //         await fetch(`${API_URL}lat=${lat}&lon=${long}&units=metric&APPID=${API_KEY}`)
+    //         .then(res => res.json())
+    //         .then(result => {
+    //             setLocalData(result);
+    //             console.log(result);
+    //             if(result.cod !== '400'){
+    //                 setLoading(false);
+    //             }
+    //         });
+    //     }
+    //     fetchData();
+    // }, [lat, long]);
 
     useEffect(() => {
         setFoundList(fromSearch);
@@ -41,15 +41,19 @@ export const Weather = ({fromSearch}) => {
 
         {loading ? <Spinner /> : 
         <div>
-            <h2 className="loc-headline">Twoja lokalizacja</h2>
-            <WeatherBrick data={localData}/>
-            {foundList.length > 0 ? 
             <div>
-                <h2 className="loc-headline">Wyszukane lokalizacje:</h2>
-                <FoundList list={foundList}/>
+                <h2 className="loc-headline">Twoja lokalizacja</h2>
+                <WeatherBrick locData={'here'}/>
             </div>
-            : ''}
+            {foundList.length != 0 ?
+            <div>
+                <h2 className="loc-headline">Szukane</h2>
+                <FoundList list={foundList}/>
+            </div> :
+            <div />
+            }
         </div>
+       
         }     
     
     </div>

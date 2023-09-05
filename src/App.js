@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import { Weather } from "./components/Weather";
 import { Header } from "./components/Header";
 
@@ -16,7 +16,7 @@ function App() {
  
   return(
     <div>
-      <Header setFromSearch={setSearchResult}/>
+      <Header setFromSearch={setSearchResult} parentPage={'main'}/>
       <Weather searchResult={searchResult} clear={clearSearch}/>
    </div>
   );

@@ -37,7 +37,7 @@ export const WeatherBrick = ({locData, cat, clear}) => {
                     console.log(result);
                 });
             };
-            fetchLocal();
+            // fetchLocal();
         } else {
             const fetchData = async() => {
                 await fetch(`${API_URL}q=${loc}&units=metric&appid=${API_KEY}`)

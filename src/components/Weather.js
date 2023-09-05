@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { WeatherBrick } from "./WeatherBrick";
 
 export const Weather = ({searchResult, clear}) => {

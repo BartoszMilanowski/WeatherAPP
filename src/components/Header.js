@@ -1,8 +1,19 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
 
-export const Header = ({setFromSearch}) => {
+export const Header = ({setFromSearch, parentPage}) => {
 
     const searchRef = useRef(null);
+
+    const[parent, setParent] = useState();
+
+    const userName = Cookies.get('userName');
+
+
+    useEffect(() => {
+        setParent(parentPage);
+    },[parentPage]);
 
     const getDay = () => {
         const days = ['niedziela','poniedziałek', 'wtorek', 'środa', 'czwartek', 'piątek', 'sobota'];
@@ -28,14 +39,53 @@ export const Header = ({setFromSearch}) => {
     return(
         <div className="header">
             <div>
-                <h1 className="app-name">WeatherAPP</h1>
+                <Link className="home-link" to='/' >
+                    <h1 className="app-name">WeatherAPP</h1>
+                </Link>
                 <p className="date">Dzisiaj jest {getDay()}, {getDate()}.</p> 
             </div>
-            
-            <div className="search-area">
-                <input ref={searchRef}/>
-                <button onClick={() => sendSearch()}>Szukaj</button>
+            <div className="header-left">
+                <div className="hi-message">
+                {
+                    userName != null ? 
+                    <p> Cześć {userName}</p> :
+                    <div className="links">
+                        {  
+                        parent != 'login' ? 
+                            <div>
+                                <Link className="menu-link" to={'/login'}>
+                                    <p>Zaloguj</p>
+                                </Link>
+                            </div> :
+                            <div />
+                        }
+                        {
+                        parent != 'register' ?
+                        <div>
+                            <Link className="menu-link" to={'/register'} >
+                                <p>Zarejestruj się</p>
+                            </Link>  
+                        </div> :
+                        <div />
+                        }
+                        
+                    </div>
+                } 
+                </div>
+                <div>
+                {
+                    parent === 'main' ?
+                    <div className="search-area">
+                        <input ref={searchRef}/>
+                        <button onClick={() => sendSearch()}>Szukaj</button>
+                    </div> :
+                    <div />
+                }  
+                </div>
+          
             </div>
+            
+            
         </div>
     )
 }

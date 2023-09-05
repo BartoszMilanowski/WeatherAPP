@@ -7,17 +7,17 @@ export const API_URL = 'https://api.openweathermap.org/data/2.5/weather?';
 export const API_KEY = '';
 
 function App() {
-  
-const[searchList, setSearchList] = useState([]);
 
-const handleSearchData = (searchResult) => {
-  setSearchList([...searchList, searchResult]);
-}
+  const[searchResult, setSearchResult] = useState(null);
 
-return(
-   <div>
-    <Header changeSearchData={handleSearchData}/>
-    <Weather fromSearch={searchList}/>
+  const clearSearch = () =>{
+    setSearchResult(null);
+  }
+ 
+  return(
+    <div>
+      <Header setFromSearch={setSearchResult}/>
+      <Weather searchResult={searchResult} clear={clearSearch}/>
    </div>
   );
 }

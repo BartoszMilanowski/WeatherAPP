@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-export const Header = ({changeSearchData}) => {
+export const Header = ({setFromSearch}) => {
 
     const searchRef = useRef(null);
 
@@ -21,7 +21,7 @@ export const Header = ({changeSearchData}) => {
     }
 
     const sendSearch = () => {
-        changeSearchData(searchRef.current.value);
+        setFromSearch(searchRef.current.value)
         searchRef.current.value = '';
     }
 

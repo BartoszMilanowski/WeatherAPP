@@ -8,9 +8,10 @@ import drizzle from '../image/icons/drizzle.png';
 import rainy from '../image/icons/rainy.png';
 import snow from '../image/icons/snow.png';
 import mist from '../image/icons/mist.png';
+import xMark from '../image/icons/x-mark.png';
 import { API_KEY, API_URL } from "../App";
 
-export const WeatherBrick = ({locData}) => {
+export const WeatherBrick = ({locData, cat, clear}) => {
 
     const[loc, setLoc] = useState('');
     const[lat, setLat] = useState('');
@@ -48,12 +49,15 @@ export const WeatherBrick = ({locData}) => {
             };
             fetchData();
         }
-    })
-  
+    },[lat, long, loc]);
+
     let icon = chooseIcon(localData);
 
-    return(
+    const clearSearch = () => {
+        clear();
+    }
 
+    return(
         <div className="weather-brick">
             <div style={{display: 'flex'}}>
                 <div style={{display: 'flex'}}>
@@ -69,9 +73,15 @@ export const WeatherBrick = ({locData}) => {
                 <div>
                     <img className="temp-icon" src={icon} />
                 </div>
-                <div>
-                    <p>{localData?.wind?.speed}km/h</p>
-                </div>
+            </div>
+            <div>
+                {cat == 'search' ?
+                <div><img
+                className="close-btn"
+                src={xMark}
+                onClick={clearSearch}
+                /></div> : 
+                <div />}
             </div>
         </div>
     )

@@ -1,5 +1,5 @@
 import React from "react";
-import { Header } from "./components/Header";
+import { Header } from "./Header";
 import Cookies from 'js-cookie';
 
 export const Login = () => {

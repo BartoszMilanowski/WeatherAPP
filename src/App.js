@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import { Weather } from "./components/Weather";
-import { Header } from "./components/Header";
+import { Weather } from "./Weather";
+import { Header } from "./Header";
 
 
 export const API_URL = 'https://api.openweathermap.org/data/2.5/weather?'; 
@@ -13,11 +13,12 @@ function App() {
   const clearSearch = () =>{
     setSearchResult(null);
   }
- 
+
+
   return(
     <div>
       <Header setFromSearch={setSearchResult} parentPage={'main'}/>
-      <Weather searchResult={searchResult} clear={clearSearch}/>
+      <Weather searchResult={searchResult} clear={clearSearch} />
    </div>
   );
 }

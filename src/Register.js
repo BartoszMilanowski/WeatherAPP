@@ -1,8 +1,10 @@
-import React, { useRef } from "react";
-import { Header } from "./components/Header";
-import { createClient } from "@supabase/supabase-js";
+import React, { useState } from "react";
+import { Header } from "./Header";
 
 export const Register = () => {
+
+    const[newUser, setNewUser] = useState({});
+
 
     return(
         <div>
@@ -11,10 +13,19 @@ export const Register = () => {
                 <div className="register-form">
                     <h5>Zarejestruj się</h5>
                     <div className="register-section">
-                        <input ref={nameRef} type="text" placeholder="Imię" />
-                        <input ref={loginRef} type="text" placeholder="Adres e-mail" />
-                        <input ref={passRef} type="password" placeholder="Hasło" />
-                        <button onClick={() => register()}>Zarejestruj się</button>
+                        <input
+                        type="text"
+                        placeholder="Imię" 
+                        onChange={(e) => setNewUser(prevState => ({...prevState, firstName: e.target.value}))}/>
+                        <input
+                        type="text"
+                        placeholder="Adres e-mail" 
+                        onChange={(e) => setNewUser(prevState => ({...prevState, login: e.target.value}))}/>
+                        <input
+                        type="password"
+                        placeholder="Hasło" 
+                        onChange={(e) => setNewUser(prevState => ({...prevState, password: e.target.value}))}/>
+                        <button>Zarejestruj się</button>
                     </div>
                 </div>
             </div>

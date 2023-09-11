@@ -44,48 +44,12 @@ export const Header = ({setFromSearch, parentPage}) => {
                 </Link>
                 <p className="date">Dzisiaj jest {getDay()}, {getDate()}.</p> 
             </div>
-            <div className="header-left">
-                <div className="hi-message">
-                {
-                    userName != null ? 
-                    <p> Cześć {userName}</p> :
-                    <div className="links">
-                        {  
-                        parent != 'login' ? 
-                            <div>
-                                <Link className="menu-link" to={'/login'}>
-                                    <p>Zaloguj</p>
-                                </Link>
-                            </div> :
-                            <div />
-                        }
-                        {
-                        parent != 'register' ?
-                        <div>
-                            <Link className="menu-link" to={'/register'} >
-                                <p>Zarejestruj się</p>
-                            </Link>  
-                        </div> :
-                        <div />
-                        }
-                        
-                    </div>
-                } 
-                </div>
-                <div>
-                {
-                    parent === 'main' ?
+            <div className="header-left"> 
                     <div className="search-area">
                         <input ref={searchRef}/>
                         <button onClick={() => sendSearch()}>Szukaj</button>
-                    </div> :
-                    <div />
-                }  
-                </div>
-          
-            </div>
-            
-            
+                    </div>          
+            </div>          
         </div>
     )
 }

@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import therometer from './image/icons/thermometer.png';
-import location from './image/icons/location.png';
-import clear from './image/icons/clear.png';
-import thunderstorm from './image/icons/thunderstorm.png';
-import cloudy from './image/icons/cloudy.png';
-import drizzle from './image/icons/drizzle.png';
-import rainy from './image/icons/rainy.png';
-import snow from './image/icons/snow.png';
-import mist from './image/icons/mist.png';
-import xMark from './image/icons/x-mark.png';
-import { API_KEY_OW, API_URL_OW } from "./App";
+import therometer from '../image/icons/thermometer.png';
+import location from '../image/icons/location.png';
+import clear from '../image/icons/clear.png';
+import thunderstorm from '../image/icons/thunderstorm.png';
+import cloudy from '../image/icons/cloudy.png';
+import drizzle from '../image/icons/drizzle.png';
+import rainy from '../image/icons/rainy.png';
+import snow from '../image/icons/snow.png';
+import mist from '../image/icons/mist.png';
+import xMark from '../image/icons/x-mark.png';
+import { API_KEY_OW, API_URL_OW } from "../App";
 import { BarLoader } from "react-spinners";
 
 export const WeatherBrick = ({locData, cat, clear}) => {
@@ -42,7 +42,7 @@ export const WeatherBrick = ({locData, cat, clear}) => {
                     }
                 });
             };
-            fetchLocal();
+            // fetchLocal();
         } else {
             const fetchData = async() => {
                 await fetch(`${API_URL_OW}q=${loc}&units=metric&appid=${API_KEY_OW}`)

@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
+import { Navbar } from "./navbar/Navbar";
 
 export const Header = ({setFromSearch}) => {
 
@@ -28,17 +29,20 @@ export const Header = ({setFromSearch}) => {
 
     return(
         <div className="header">
-            <div>
-                <Link className="home-link" to='/' >
-                    <h1 className="app-name">WeatherAPP</h1>
-                </Link>
-                <p className="date">Dzisiaj jest {getDay()}, {getDate()}.</p> 
+            <div className="header-left">
+                <Navbar />
+                <div>
+                    <Link className="home-link" to='/' >
+                        <h1 className="app-name">WeatherAPP</h1>
+                    </Link>
+                    <p className="date">Dzisiaj jest {getDay()}, {getDate()}.</p> 
+                </div>
             </div>
-            <div className="header-left"> 
-                    <div className="search-area">
-                        <input ref={searchRef}/>
-                        <button onClick={() => sendSearch()}>Szukaj</button>
-                    </div>          
+            <div className="header-right">
+                <div className="search-area">
+                    <input ref={searchRef}/>
+                    <button onClick={() => sendSearch()}>Szukaj</button>
+                </div>       
             </div>          
         </div>
     )

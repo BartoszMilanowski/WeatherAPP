@@ -88,6 +88,7 @@ html {
     padding-left: 10px;
     margin-bottom: 10px;
     font-size: 5vw;
+    height: 110px;
     color: white;
     background: rgba(255, 255, 255, 0.21);
     border-radius: 16px;
@@ -95,6 +96,26 @@ html {
     backdrop-filter: blur(0px);
     -webkit-backdrop-filter: blur(0px);
     border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.weather-data{
+    display: flex;
+    justify-content: space-between;
+}
+
+.weather-data-left{
+    display: flex;
+}
+
+.weather-data-left div{
+    display: flex;
+}
+
+.weather-data-right{
+    display: flex;
+    position: absolute;
+    right: 15px;
+    top: -8px;
 }
 
 .temp-icon{
@@ -108,7 +129,7 @@ html {
 .close-btn{
     width: 3vw;
     height: 3vw;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
 .loc-headline{
@@ -116,4 +137,9 @@ html {
     font-size: 5vh;
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+.loader{
+    display: block;
+    margin: auto;
 }

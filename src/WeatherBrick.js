@@ -10,6 +10,7 @@ import snow from './image/icons/snow.png';
 import mist from './image/icons/mist.png';
 import xMark from './image/icons/x-mark.png';
 import { API_KEY_OW, API_URL_OW } from "./App";
+import { BarLoader } from "react-spinners";
 
 export const WeatherBrick = ({locData, cat, clear}) => {
 
@@ -17,6 +18,7 @@ export const WeatherBrick = ({locData, cat, clear}) => {
     const[lat, setLat] = useState('');
     const[long, setLong] = useState('');
     const[localData, setLocalData] = useState('');
+    const[loading, setLoading] = useState(true);
 
     useEffect(() => {
         setLoc(locData);
@@ -34,7 +36,10 @@ export const WeatherBrick = ({locData, cat, clear}) => {
                 .then(res => res.json())
                 .then(result => {
                     setLocalData(result);
-                    console.log(result);                
+                    console.log(result);
+                    if(result.cod != '400'){
+                        setLoading(false);
+                    }
                 });
             };
             fetchLocal();
@@ -45,6 +50,9 @@ export const WeatherBrick = ({locData, cat, clear}) => {
                 .then(result => {
                     setLocalData(result);
                     console.log(result);
+                    if(result.cod != '400'){
+                        setLoading(false);
+                    }
                 })
             };
             fetchData();
@@ -59,30 +67,41 @@ export const WeatherBrick = ({locData, cat, clear}) => {
 
     return(
         <div className="weather-brick">
-            <div style={{display: 'flex'}}>
-                <div style={{display: 'flex'}}>
-                    <img className="temp-icon"
-                    src={location} />
-                    <p className="location-name">{localData.name}</p>
+            {
+                loading ?
+                <BarLoader 
+                className="loader"
+                /> :
+                <div className="weather-data">
+                    <div className="weather-data-left">
+                        <div>
+                            <img className="temp-icon"
+                            src={location} />
+                            <p className="location-name">{localData.name}</p>
+                        </div>
+                        <div>
+                            <img className="temp-icon" 
+                            src={therometer}/>
+                            <p>{localData?.main?.temp}&deg;C</p>
+                        </div>
+                        <div>
+                            <img className="temp-icon" src={icon} />
+                        </div>
+                    </div>
+                    <div className="weather-data-right">
+                        {cat == 'search' ?
+                        <div>
+                            <img
+                            className="close-btn"
+                            src={xMark}
+                            onClick={clearSearch}
+                            />
+                        </div> : 
+                        <div />}
+                    </div>
                 </div>
-                <div style={{display: 'flex'}}>
-                    <img className="temp-icon" 
-                    src={therometer}/>
-                    <p>{localData?.main?.temp}&deg;C</p>
-                </div>
-                <div>
-                    <img className="temp-icon" src={icon} />
-                </div>
-            </div>
-            <div>
-                {cat == 'search' ?
-                <div><img
-                className="close-btn"
-                src={xMark}
-                onClick={clearSearch}
-                /></div> : 
-                <div />}
-            </div>
+            }
+        
         </div>
     )
 }

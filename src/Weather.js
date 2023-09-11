@@ -8,7 +8,7 @@ export const Weather = () => {
 
     const clearSearch = () =>{
       setSearchResult(null);
-    }  
+    }
 
 
     return(

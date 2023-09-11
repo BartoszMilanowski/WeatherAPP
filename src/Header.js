@@ -1,19 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-import Cookies from "js-cookie";
 
-export const Header = ({setFromSearch, parentPage}) => {
+export const Header = ({setFromSearch}) => {
 
     const searchRef = useRef(null);
-
-    const[parent, setParent] = useState();
-
-    const userName = Cookies.get('userName');
-
-
-    useEffect(() => {
-        setParent(parentPage);
-    },[parentPage]);
 
     const getDay = () => {
         const days = ['niedziela','poniedziałek', 'wtorek', 'środa', 'czwartek', 'piątek', 'sobota'];

@@ -9,7 +9,7 @@ import rainy from './image/icons/rainy.png';
 import snow from './image/icons/snow.png';
 import mist from './image/icons/mist.png';
 import xMark from './image/icons/x-mark.png';
-import { API_KEY, API_URL } from "./App";
+import { API_KEY_OW, API_URL_OW } from "./App";
 
 export const WeatherBrick = ({locData, cat, clear}) => {
 
@@ -30,7 +30,7 @@ export const WeatherBrick = ({locData, cat, clear}) => {
                     setLong(pos.coords.longitude);
                 });
                 
-                await fetch(`${API_URL}lat=${lat}&lon=${long}&units=metric&APPID=${API_KEY}`)
+                await fetch(`${API_URL_OW}lat=${lat}&lon=${long}&units=metric&APPID=${API_KEY_OW}`)
                 .then(res => res.json())
                 .then(result => {
                     setLocalData(result);
@@ -40,7 +40,7 @@ export const WeatherBrick = ({locData, cat, clear}) => {
             fetchLocal();
         } else {
             const fetchData = async() => {
-                await fetch(`${API_URL}q=${loc}&units=metric&appid=${API_KEY}`)
+                await fetch(`${API_URL_OW}q=${loc}&units=metric&appid=${API_KEY_OW}`)
                 .then(res => res.json())
                 .then(result => {
                     setLocalData(result);

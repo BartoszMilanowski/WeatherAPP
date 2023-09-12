@@ -9,8 +9,8 @@ import rainy from '../image/icons/rainy.png';
 import snow from '../image/icons/snow.png';
 import mist from '../image/icons/mist.png';
 import xMark from '../image/icons/x-mark.png';
-import { API_KEY_OW, API_URL_OW } from "../App";
 import { BarLoader } from "react-spinners";
+import { ApiData } from "../data/ApiData";
 
 export const WeatherBrick = ({locData, cat, clear}) => {
 
@@ -32,7 +32,7 @@ export const WeatherBrick = ({locData, cat, clear}) => {
                     setLong(pos.coords.longitude);
                 });
                 
-                await fetch(`${API_URL_OW}lat=${lat}&lon=${long}&units=metric&APPID=${API_KEY_OW}`)
+                await fetch(`${ApiData.API_URL_OW}lat=${lat}&lon=${long}&units=metric&APPID=${ApiData.API_KEY_OW}`)
                 .then(res => res.json())
                 .then(result => {
                     setLocalData(result);
@@ -42,10 +42,10 @@ export const WeatherBrick = ({locData, cat, clear}) => {
                     }
                 });
             };
-            // fetchLocal();
+            fetchLocal();
         } else {
             const fetchData = async() => {
-                await fetch(`${API_URL_OW}q=${loc}&units=metric&appid=${API_KEY_OW}`)
+                await fetch(`${ApiData.API_URL_OW}q=${loc}&units=metric&appid=${ApiData.API_KEY_OW}`)
                 .then(res => res.json())
                 .then(result => {
                     setLocalData(result);

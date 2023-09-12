@@ -12,6 +12,8 @@ html {
     overflow-x: hidden;
 }
 
+/* Header */
+
 .header{
     display: flex;
     align-items: center;
@@ -59,6 +61,87 @@ html {
 .header-right div{
     padding: 5px;
 }
+
+/*Navbar*/
+
+.navbar{
+    background-color: aliceblue;
+    display: flex;
+    justify-self: start;
+    margin-right: 20px;
+}
+
+.menu-bars{
+    margin-left: 2rem;
+    font-size: 4rem;
+    background: none;
+    color: inherit;
+}
+
+.close-menu{
+    font-size: 5em;
+    padding-left: 20px;
+}
+
+.nav-menu{
+    background-color: aliceblue;
+    width: 500px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    transition: 850ms;
+    z-index: 100;
+}
+
+.nav-menu.active{
+    left: 0;
+    transition: 350ms;
+    padding-top: 18px;    
+}
+
+.nav-text{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 8px 0px 9px 16px;
+    list-style: none;
+    height: 60px;
+}
+
+.nav-text a{
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+    width: 95%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 4px;
+}
+
+.nav-text a:hover{
+    background-color: white;
+}
+
+.nav-menu-items{
+    width: 100%;
+}
+
+.navbar-toggle{
+    background-color: black;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: start;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+/*Weather*/
 
 .weather-section{
     height: 90vh;
@@ -126,7 +209,36 @@ html {
     margin-bottom: 5px;
 }
 
+/*Loader*/
+
 .loader{
     display: block;
     margin: auto;
+}
+
+/* 404 */
+
+.not-found-section{
+    width: 100%;
+    height: 90vh;
+    background-color: gray;
+    text-align: center;
+    padding-top: 180px;
+}
+
+.not-found-section h2{
+    font-size: 200px;
+}
+
+.not-found-section span{
+    font-size: 50px;
+}
+
+.not-found-section span a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.not-found-section span a:hover{
+    text-decoration: underline;
 }

@@ -11,6 +11,7 @@ import mist from '../image/icons/mist.png';
 import xMark from '../image/icons/x-mark.png';
 import { BarLoader } from "react-spinners";
 import { ApiData } from "../data/ApiData";
+import { Link } from "react-router-dom";
 
 export const WeatherBrick = ({locData, cat, clear}) => {
 
@@ -66,6 +67,7 @@ export const WeatherBrick = ({locData, cat, clear}) => {
     }
 
     return(
+        <Link to={`/weather/details/${localData.name}/${lat}/${long}`}>
         <div className="weather-brick">
             {
                 loading ?
@@ -103,6 +105,7 @@ export const WeatherBrick = ({locData, cat, clear}) => {
             }
         
         </div>
+        </Link>
     )
 }
 

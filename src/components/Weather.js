@@ -4,6 +4,8 @@ import { Header } from "./Header";
 
 export const Weather = () => {
 
+    document.title = 'Aktualna pogoda';
+
     const[searchResult, setSearchResult] = useState(null);
 
     const clearSearch = () =>{

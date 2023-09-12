@@ -14,6 +14,7 @@ html {
 
 a{
     text-decoration: none;
+    color: inherit;
 }
 
 /* Header */
@@ -25,18 +26,6 @@ a{
     height: 10vh;
     padding: 2em;
     background-color: aliceblue;
-}
-
-.search-area input{
-    height: 30px;
-    margin-right: 5px;
-    padding: 8px;
-    border-radius: 16px;
-}
-.search-area button{
-    height: 30px;
-    width: 70px;
-    border-radius: 16px;
 }
 
 .app-name{
@@ -156,6 +145,28 @@ a{
     background-position: center;
 }
 
+.search-area{
+    position: fixed;
+    right: 0;
+    margin: 15px;
+}
+
+.search-area input{
+    height: 30px;
+    margin-right: 5px;
+    padding: 8px;
+    border-radius: 16px;
+}
+.search-area button{
+    height: 30px;
+    width: 70px;
+    border-radius: 16px;
+}
+
+.brick-area{
+    padding-top: 50px;
+}
+
 .weather-brick{
     display: flex;
     justify-content: space-between;
@@ -213,6 +224,40 @@ a{
     margin-bottom: 5px;
 }
 
+/* Details*/
+
+.details-section{
+        height: 90vh;
+        width: 100%;
+        padding: 5px;
+        align-items: center;
+        background-image: url('./image/clear-sky.jpg');
+        background-position: center;
+        color: white;
+        overflow-y: scroll;
+}
+
+.details-section h2{
+    text-align: center;
+    padding-top: 20px;
+    font-size: 9vh;
+}
+
+.details-section h2 img{
+    width: 9vh;
+    height: 9vh;
+}
+
+.hourly-data{
+    display: flex;
+    font-size: 30px;
+    margin-left: 40vw;
+    margin-top: 20px;
+}
+
+.time{
+    margin-right: 50px;
+}
 /*Loader*/
 
 .loader{

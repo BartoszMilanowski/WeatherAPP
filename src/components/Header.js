@@ -1,12 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { SidebarData } from "../data/SidebarData";
 
-export const Header = ({setFromSearch}) => {
+export const Header = () => {
 
-    const searchRef = useRef(null);
 
     const getDay = () => {
         const days = ['niedziela','poniedziałek', 'wtorek', 'środa', 'czwartek', 'piątek', 'sobota'];
@@ -22,11 +21,6 @@ export const Header = ({setFromSearch}) => {
         const month = d.getMonth() < 10 ? `0${d.getMonth()+1}` : d.getMonth()+1;
     
         return day + '.' + month + '.' + d.getFullYear();
-    }
-
-    const sendSearch = () => {
-        setFromSearch(searchRef.current.value)
-        searchRef.current.value = '';
     }
 
     const[sidebar, setSidebar] = useState(false);
@@ -67,12 +61,6 @@ export const Header = ({setFromSearch}) => {
                     <p className="date">Dzisiaj jest {getDay()}, {getDate()}.</p> 
                 </div>
             </div>
-            <div className="header-right">
-                <div className="search-area">
-                    <input ref={searchRef}/>
-                    <button onClick={() => sendSearch()}>Szukaj</button>
-                </div>       
-            </div>          
         </div>
     )
 }

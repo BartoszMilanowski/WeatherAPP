@@ -67,7 +67,6 @@ export const WeatherBrick = ({locData, cat, clear}) => {
     }
 
     return(
-        <Link to={`/weather/details/${localData.name}/${lat}/${long}`}>
         <div className="weather-brick">
             {
                 loading ?
@@ -75,21 +74,23 @@ export const WeatherBrick = ({locData, cat, clear}) => {
                 className="loader"
                 /> :
                 <div className="weather-data">
-                    <div className="weather-data-left">
-                        <div>
-                            <img className="temp-icon"
-                            src={location} />
-                            <p className="location-name">{localData.name}</p>
+                    <Link to={`/weather/details/${localData.name}/${localData?.coord?.lat}/${localData?.coord?.lon}`}>
+                        <div className="weather-data-left">
+                            <div>
+                                <img className="temp-icon"
+                                src={location} />
+                                <p className="location-name">{localData.name}</p>
+                            </div>
+                            <div>
+                                <img className="temp-icon" 
+                                src={therometer}/>
+                                <p>{localData?.main?.temp}&deg;C</p>
+                            </div>
+                            <div>
+                                <img className="temp-icon" src={icon} />
+                            </div>
                         </div>
-                        <div>
-                            <img className="temp-icon" 
-                            src={therometer}/>
-                            <p>{localData?.main?.temp}&deg;C</p>
-                        </div>
-                        <div>
-                            <img className="temp-icon" src={icon} />
-                        </div>
-                    </div>
+                    </Link>
                     <div className="weather-data-right">
                         {cat == 'search' ?
                         <div>
@@ -103,9 +104,7 @@ export const WeatherBrick = ({locData, cat, clear}) => {
                     </div>
                 </div>
             }
-        
         </div>
-        </Link>
     )
 }
 

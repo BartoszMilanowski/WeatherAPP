@@ -231,6 +231,7 @@ a{
         width: 100%;
         padding: 5px;
         align-items: center;
+        text-align: center;
         background-image: url('./image/clear-sky.jpg');
         background-position: center;
         color: white;
@@ -238,7 +239,6 @@ a{
 }
 
 .details-section h2{
-    text-align: center;
     padding-top: 20px;
     font-size: 9vh;
 }
@@ -248,10 +248,14 @@ a{
     height: 9vh;
 }
 
+.details-head span{
+    font-size: 30px;
+}
+
 .hourly-data{
     display: flex;
+    justify-content: center;
     font-size: 30px;
-    margin-left: 40vw;
     margin-top: 20px;
 }
 
@@ -261,6 +265,14 @@ a{
 
 .hourly-table tr.gray{
     background-color: rgba(128, 128, 128, 0.5);
+}
+
+.back-link{
+    text-align: center;
+    width: 10vw;
+    font-size: 20px;
+    margin-top: 15px;
+    margin-left: 10px;
 }
 /*Loader*/
 

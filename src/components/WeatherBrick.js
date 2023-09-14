@@ -20,6 +20,7 @@ export const WeatherBrick = ({locData, cat, clear}) => {
     const[long, setLong] = useState('');
     const[localData, setLocalData] = useState('');
     const[loading, setLoading] = useState(true);
+    const[notFound, setNotFound] = useState(false);
 
     useEffect(() => {
         setLoc(locData);
@@ -49,10 +50,14 @@ export const WeatherBrick = ({locData, cat, clear}) => {
                 await fetch(`${ApiData.API_URL_OW}q=${loc}&units=metric&appid=${ApiData.API_KEY_OW}`)
                 .then(res => res.json())
                 .then(result => {
+                    setNotFound(false);
                     setLocalData(result);
                     console.log(result);
                     if(result.cod != '400'){
                         setLoading(false);
+                    }
+                    if(result.cod == '404'){
+                        setNotFound(true);
                     }
                 })
             };
@@ -73,37 +78,57 @@ export const WeatherBrick = ({locData, cat, clear}) => {
                 <BarLoader 
                 className="loader"
                 /> :
-                <div className="weather-data">
-                    <Link to={`/weather/details/${localData.name}/${localData?.coord?.lat}/${localData?.coord?.lon}`}>
-                        <div className="weather-data-left">
-                            <div>
-                                <img className="temp-icon"
-                                src={location} />
-                                <p className="location-name">{localData.name}</p>
-                            </div>
-                            <div>
-                                <img className="temp-icon" 
-                                src={therometer}/>
-                                <p>{localData?.main?.temp}&deg;C</p>
-                            </div>
-                            <div>
-                                <img className="temp-icon" src={icon} />
-                            </div>
-                        </div>
-                    </Link>
-                    <div className="weather-data-right">
-                        {cat == 'search' ?
+                <div>
+                    {
+                        notFound ?
                         <div>
-                            <img
-                            className="close-btn"
-                            src={xMark}
-                            onClick={clearSearch}
-                            />
-                        </div> : 
-                        <div />}
+                            <div className="weather-data-left">
+                                <p className="location-name">Nie znaleziono miasta</p>
+                            </div>
+                            <div className="weather-data-right">
+                            <div>
+                                <img
+                                className="close-btn"
+                                src={xMark}
+                                onClick={clearSearch}
+                                />
+                            </div>
+                            </div>
+                        </div> :
+                        <div className="weather-data">
+                        <Link to={`/weather/details/${localData.name}/${localData?.coord?.lat}/${localData?.coord?.lon}`}>
+                            <div className="weather-data-left">
+                                <div>
+                                    <img className="temp-icon"
+                                    src={location} />
+                                    <p className="location-name">{localData.name}</p>
+                                </div>
+                                <div>
+                                    <img className="temp-icon" 
+                                    src={therometer}/>
+                                    <p>{localData?.main?.temp}&deg;C</p>
+                                </div>
+                                <div>
+                                    <img className="temp-icon" src={icon} />
+                                </div>
+                            </div>
+                        </Link>
+                        <div className="weather-data-right">
+                            {cat == 'search' ?
+                            <div>
+                                <img
+                                className="close-btn"
+                                src={xMark}
+                                onClick={clearSearch}
+                                />
+                            </div> : 
+                            <div />}
+                        </div>
                     </div>
+                    }
+
                 </div>
-            }
+                }
         </div>
     )
 }

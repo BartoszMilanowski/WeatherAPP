@@ -23,7 +23,7 @@ export const Weather = () => {
             <Helmet>
                 <title>Aktualna pogoda</title>
             </Helmet>
-            <Header setFromSearch={setSearchResult}/>
+            <Header />
             <div className='weather-section'>
                 <div className="search-area">
                     <input ref={searchRef}/>

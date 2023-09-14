@@ -3,7 +3,7 @@ import moment from 'moment'
 import { Helmet } from 'react-helmet'
 import { Header } from './Header'
 import { ApiData } from '../data/ApiData'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import location from '../image/icons/location.png'
 
 
@@ -20,7 +20,8 @@ export const Details = () => {
             .then(res => res.json())
             .then(result => {
                 setTime(result?.hourly?.time)
-                setTemp(result?.hourly?.temperature_2m)              
+                setTemp(result?.hourly?.temperature_2m)
+
             });
         };
         fetchData();
@@ -37,8 +38,12 @@ export const Details = () => {
         <div>
             <Header />
             <div className='details-section'>
-                <div>
+                <div className='back-link'>
+                    <Link to={'/weather'}>&#10092;&#10092; Pogoda</Link>
+                </div>
+                <div className='details-head'>
                     <h2><img src={location} />{name}</h2>
+                    <span>Prognoza 24-godzinna</span>
                 </div>
                 <div className='hourly-data'>
                     <table className='hourly-table'>
@@ -53,7 +58,7 @@ export const Details = () => {
                             })}
                         </td>
                         <td>
-                            <th>Godzina</th>
+                            <th>Godz.</th>
                             {time.map((el, i) => {
                                 return(
                                     <tr key={i} className={i % 2 == 0 ? 'gray' : ''}>

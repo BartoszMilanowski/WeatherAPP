@@ -1,21 +1,23 @@
-import React ,{ useState, useRef } from "react";
+import React ,{ useRef } from "react";
+import { useCookies } from "react-cookie";
 import { Helmet } from "react-helmet";
 import { WeatherBrick } from "./WeatherBrick";
 import { Header } from "./Header";
+import Cookies from "js-cookie";
 
 export const Weather = () => {
 
     const searchRef = useRef(null);
 
-    const[searchResult, setSearchResult] = useState(null);
+    const[searchCookies, setSearchCookies] = useCookies(['result']);
 
     const searchHandle = () => {
-        setSearchResult(searchRef.current.value);
+        setSearchCookies('result' ,searchRef.current.value);
         searchRef.current.value = '';
     }
 
     const clearSearch = () =>{
-      setSearchResult(null);
+      Cookies.remove('result');
     }
 
     return(
@@ -32,10 +34,10 @@ export const Weather = () => {
                 <div>
                     <div>
                         {
-                        searchResult != null ? 
+                        searchCookies.result != null ? 
                         <div className="brick-area">
                             <h2 className="loc-headline">Wynik wyszukiwania</h2>
-                            <WeatherBrick locData={searchResult} cat={'search'} clear={clearSearch} />
+                            <WeatherBrick locData={searchCookies.result} cat={'search'} clear={clearSearch} />
                         </div> :
                         < div />
                         }

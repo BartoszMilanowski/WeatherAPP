@@ -109,7 +109,7 @@ export const WeatherBrick = ({ locData, cat, clear }) => {
                                                 <p>{localData?.main?.temp}&deg;C</p>
                                             </div>
                                             <div>
-                                                <img className="temp-icon" src={icon} />
+                                                <img className="temp-icon cond-icon" src={icon} />
                                             </div>
                                         </div>
                                     </Link>

@@ -144,6 +144,7 @@ a{
     align-items: center;
     background-image: url('./image/clear-sky.jpg');
     background-position: center;
+    overflow-y: scroll;
 }
 
 .search-area{
@@ -174,7 +175,7 @@ a{
     padding-left: 10px;
     margin-bottom: 10px;
     font-size: 5vw;
-    height: 110px;
+    min-height: 110px;
     color: white;
     background: rgba(255, 255, 255, 0.21);
     border-radius: 16px;
@@ -182,6 +183,8 @@ a{
     backdrop-filter: blur(0px);
     -webkit-backdrop-filter: blur(0px);
     border: 1px solid rgba(255, 255, 255, 0.3);
+    overflow: scroll;
+
 }
 
 .weather-data{
@@ -192,14 +195,15 @@ a{
 
 .weather-data-left{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .weather-data-left div{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+
 }
 
 .weather-data-right{
@@ -320,6 +324,8 @@ a{
 
 @media screen and (max-width: 800px) {
 
+    /* Weather */
+
 .loc-headline{
     font-size: 3vh;
 }
@@ -336,8 +342,8 @@ a{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 60vw;
-    height: 20vh;
+    min-width: 60vw;
+    min-height: 20vh;
     font-size: 5vh;
 }
 
@@ -366,4 +372,46 @@ a{
     height: 5vh;
 }
     
+}
+
+@media screen and (max-width: 400px){
+
+    /* Navbar */
+    .nav-menu{
+        left: -150%;
+    }
+
+    /* Weather */
+
+    .weather-brick{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 80vw;
+        min-height: 40vh;
+        font-size: 6vh;
+        overflow-y: scroll;
+        white-space: nowrap;
+    }
+
+    .weather-data-left{
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .weather-data-right{
+        transform: translateY(-200%) translateX(-425%);
+        padding-bottom: 5px;
+    }
+
+    .close-btn{
+        width: 5vh;
+        height: 5vh;
+    }
+
+    .cond-icon{
+        width: 8vh;
+        height: 8vh;
+    }
+
 }

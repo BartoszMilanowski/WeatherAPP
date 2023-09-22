@@ -139,7 +139,8 @@ a{
 .weather-section{
     height: 90vh;
     width: 100%;
-    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
     align-items: center;
     background-image: url('./image/clear-sky.jpg');
     background-position: center;
@@ -164,12 +165,12 @@ a{
 }
 
 .brick-area{
-    padding-top: 50px;
+    padding: 40px 10px 0px;
 }
 
 .weather-brick{
     display: flex;
-    justify-content: space-between;
+    align-items: center;
     padding-left: 10px;
     margin-bottom: 10px;
     font-size: 5vw;
@@ -186,21 +187,28 @@ a{
 .weather-data{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .weather-data-left{
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .weather-data-left div{
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .weather-data-right{
     display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     right: 15px;
-    top: -8px;
+
 }
 
 .temp-icon{
@@ -306,4 +314,56 @@ a{
 
 .not-found-section span a:hover{
     text-decoration: underline;
+}
+
+/* Media queries*/
+
+@media screen and (max-width: 800px) {
+
+.loc-headline{
+    font-size: 3vh;
+}
+
+.brick-area{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.weather-brick{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60vw;
+    height: 20vh;
+    font-size: 5vh;
+}
+
+.weather-data{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.weather-data-left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.weather-data-left div{
+    padding: 4px;
+}
+
+.weather-data-right{
+    transform: translateY(-140%);
+}
+
+.temp-icon{
+    width: 5vh;
+    height: 5vh;
+}
+    
 }

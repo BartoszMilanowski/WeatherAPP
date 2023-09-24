@@ -42,6 +42,10 @@ a{
     margin-top: 4px;
 }
 
+.date-short{
+    display: none;
+}
+
 .header-left{
     display: flex;
     margin-top: auto;
@@ -197,6 +201,7 @@ a{
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+    max-width: 80%;
 }
 
 .weather-data-left div{
@@ -364,7 +369,7 @@ a{
 }
 
 .weather-data-right{
-    transform: translateY(-140%);
+    transform: translateY(-150%);
 }
 
 .temp-icon{
@@ -376,9 +381,27 @@ a{
 
 @media screen and (max-width: 400px){
 
-    /* Navbar */
+    /* Header */
+
+    .app-name{
+        font-size: 18px;
+    }
+
+    .date{
+        display: none;
+    }
+
+    .date-short{
+        display: block;
+        font-size: 14px;
+    }
+
     .nav-menu{
         left: -150%;
+    }
+
+    .navbar{
+        max-height: 5vh;
     }
 
     /* Weather */
@@ -412,6 +435,15 @@ a{
     .cond-icon{
         width: 8vh;
         height: 8vh;
+    }
+
+    @media screen and (max-height: 650px) {
+        
+        .weather-data-right{
+            transform: translateY(-200%) translateX(-550%);
+            padding-bottom: 5px;
+        }
+        
     }
 
 }

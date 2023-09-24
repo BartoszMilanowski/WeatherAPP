@@ -59,6 +59,7 @@ export const Header = () => {
                         <h1 className="app-name">WeatherAPP</h1>
                     </Link>
                     <p className="date">Dzisiaj jest {getDay()}, {getDate()}.</p>
+                    <p className="date-short">{getDay()}, {getDate()}</p>
                 </div>
             </div>
         </div>
